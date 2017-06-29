@@ -6,31 +6,60 @@
 </head>
 <body>
    <script type="text/javascript">
-      const moovie = 'Star Wars: el despertar de la Fuerza';
-      const pgMoovie = 13;
+   function platzom(str){
+      let translation = str;
 
-      const nameShannonbit = 'Emmanuelle';
-      const ageShannonbit = 32;
+      //Si la palabra termina en "ar" se le quitan esos dos caracteres
+      if( str.toLowerCase().endsWith('ar') ) {
+         translation = str.slice(0, -2);
+      }
 
-      const nameSanti = 'Santi';
-      const ageSanti = 12;
+      //Si la palabra inicia con Z, se le añade "pe" al final
+      if( str.toLowerCase().startsWith('z') ) {
+         translation += 'pe';
+      }
 
-      function canWatchMoovie(name, age, isWithAdult){
+      // si la palabra traducida tiene 10 o más letras, se debe partir a la
+      // mitas y unir con un guión medio
+      const l = translation.length;
+      if( l >= 10 ) {
+         const firstHalf = translation.slice( 0, Math.round( l / 2 ) );
+         const secondHalf = translation.slice( Math.round( l / 2 ) );
+         translation = `${firstHalf}-${secondHalf}`;
+      }
 
-         if( age >= pgMoovie ){
-            alert(`${name} puede pasar a ver ${moovie}`);
-         } else if( isWithAdult ){
-            alert(`${name} puede pasar a ver ${moovie}.
-               Aún que su edad es ${age} se encuentra en compañia de un adulto`);
-         } else {
-            alert( `${name} no puede pasar a ver ${moovie}
-               Tiene ${age} años y necesita tener ${pgMoovie}` );
+      //Si la palabra original es un palíndromo,
+      //ninguna regla anterior cuenta y se devuelve
+      // intercalando minúsculas y mayúsculas
+      const reverse = (str) => str.split('').reverse().join('');
+
+      function minMay(str) {
+         let translation = '';
+         let capitalize = true;
+
+         for(let i = 0; i < l; i++) {
+            const char = str.charAt(i);
+            translation += capitalize ? char.toUpperCase() : char.toLowerCase();
+            capitalize = !capitalize;
          }
+
+         return translation;
 
       }
 
-      canWatchMoovie(nameShannonbit, ageShannonbit);
-      canWatchMoovie(nameSanti, ageSanti, true);
+      if( str === reverse(str) ) {
+         return minMay(str);
+      }
+
+      return translation;
+
+   }
+
+   console.log( platzom( 'programar' ) );
+   console.log( platzom( 'zorro' ) );
+   console.log( platzom( 'zarpar' ) );
+   console.log( platzom( 'abecedario' ) );
+   console.log( platzom( 'sometemos' ) );
    </script>
 </body>
 </html>
