@@ -6,33 +6,24 @@
 </head>
 <body>
    <script type="text/javascript">
-      const birthday = new Date(1985, 02, 23)
-      const today = new Date()
-      const time = today - birthday
-      const timeconverter = Math.floor(time / 1000 / 60 / 60 / 24 / 365)
-      console.log(timeconverter)
+   const p1 = {
+      x: 0,
+      y: 4
+   }
 
-      let nextBirthdayYear = 0
+   const p2 = {
+      x: 3,
+      y: 0
+   }
 
-      if( birthday.getMonth() > today.getMonth() ){
-         nextBirthdayYear = today.getFullYear()
-      } else {
-         nextBirthdayYear = today.getFullYear() + 1
-      }
+   function distancia(p1, p2) {
+      const x = p1.x - p2.x
+      const y = p1.y - p2.y
+      return Math.sqrt( (x * x) + (y * y) )
+   }
 
-      const nextBirthday = new Date( nextBirthdayYear, birthday.getMonth(), birthday.getDate() )
-      console.log(nextBirthday)
-      const dias = [
-         'Domingo',
-         'Lunes',
-         'Martes',
-         'Miercoles',
-         'Jueves',
-         'Viernes',
-         'Sábado'
-      ]
-
-      console.log( `Tu cumpleaños caerá en ${dias[ nextBirthday.getDay() ]}` );
+   console.log( distancia( p1, p2 ) );
+   console.log( distancia( p1, {x: 15, y:-10} ) );
    </script>
 </body>
 </html>
