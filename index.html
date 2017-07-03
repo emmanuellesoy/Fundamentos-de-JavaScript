@@ -6,40 +6,33 @@
 </head>
 <body>
    <script type="text/javascript">
-   let gokuLife = 100
-   let supermanLife = 100
-   const MIN_POWER = 5
-   const MAX_POWEr = 12
-   let round = 1
+      const birthday = new Date(1985, 02, 23)
+      const today = new Date()
+      const time = today - birthday
+      const timeconverter = Math.floor(time / 1000 / 60 / 60 / 24 / 365)
+      console.log(timeconverter)
 
-   const ambosSiguenVivos = () => gokuLife > 0 && supermanLife > 0
-   const powerCalculator = () => Math.round( Math.random() * ( MAX_POWEr - MIN_POWER ) + MIN_POWER )
+      let nextBirthdayYear = 0
 
-   while( ambosSiguenVivos() ){
-      console.warn(`Round ${round}`)
-      const gokuPunch = powerCalculator()
-      const supermanPunch = powerCalculator()
-
-      if(gokuPunch > supermanPunch){
-         //Goku Ataca
-         console.info(`Goku ataca a Superman con un golpe de ${gokuPunch}`)
-         supermanLife -= gokuPunch
-         console.log(`Superman Lifepoints: ${supermanLife}`);
+      if( birthday.getMonth() > today.getMonth() ){
+         nextBirthdayYear = today.getFullYear()
       } else {
-         //Superman Ataca
-         console.info(`superman ataca a Goku con un golpe de ${supermanPunch}`)
-         gokuLife -= supermanPunch
-         console.log(`Goku Lifepoints: ${gokuLife}`);
+         nextBirthdayYear = today.getFullYear() + 1
       }
 
-      round++;
-   }
+      const nextBirthday = new Date( nextBirthdayYear, birthday.getMonth(), birthday.getDate() )
+      console.log(nextBirthday)
+      const dias = [
+         'Domingo',
+         'Lunes',
+         'Martes',
+         'Miercoles',
+         'Jueves',
+         'Viernes',
+         'Sábado'
+      ]
 
-   if( gokuLife > 0 ){
-      console.log(`Goku ganó la pelea`);
-   } else {
-      console.log(`Superman ganó la pelea`);
-   }
+      console.log( `Tu cumpleaños caerá en ${dias[ nextBirthday.getDay() ]}` );
    </script>
 </body>
 </html>
