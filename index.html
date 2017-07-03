@@ -6,60 +6,34 @@
 </head>
 <body>
    <script type="text/javascript">
-   function platzom(str){
-      let translation = str;
+      const dias = [
+         'lunes',
+         'martes',
+         'miercoles',
+         'jueves',
+         'sabado',
+         'domingo'
+      ]
 
-      //Si la palabra termina en "ar" se le quitan esos dos caracteres
-      if( str.toLowerCase().endsWith('ar') ) {
-         translation = str.slice(0, -2);
+      const nombre = 'shannonbit'
+
+      function correr(){
+         const min = 5;
+         const max = 15;
+         return Math.round( Math.random() * (max - min) +  min);
       }
 
-      //Si la palabra inicia con Z, se le añade "pe" al final
-      if( str.toLowerCase().startsWith('z') ) {
-         translation += 'pe';
+      let totalKm = 0;
+      const length = dias.length;
+
+      for(let i = 0; i < length; i++){
+         const km = correr();
+         totalKm += km;
+         console.log( `El día ${dias[i]} ${nombre} corrió ${km}km` );
       }
 
-      // si la palabra traducida tiene 10 o más letras, se debe partir a la
-      // mitas y unir con un guión medio
-      const l = translation.length;
-      if( l >= 10 ) {
-         const firstHalf = translation.slice( 0, Math.round( l / 2 ) );
-         const secondHalf = translation.slice( Math.round( l / 2 ) );
-         translation = `${firstHalf}-${secondHalf}`;
-      }
-
-      //Si la palabra original es un palíndromo,
-      //ninguna regla anterior cuenta y se devuelve
-      // intercalando minúsculas y mayúsculas
-      const reverse = (str) => str.split('').reverse().join('');
-
-      function minMay(str) {
-         let translation = '';
-         let capitalize = true;
-
-         for(let i = 0; i < l; i++) {
-            const char = str.charAt(i);
-            translation += capitalize ? char.toUpperCase() : char.toLowerCase();
-            capitalize = !capitalize;
-         }
-
-         return translation;
-
-      }
-
-      if( str === reverse(str) ) {
-         return minMay(str);
-      }
-
-      return translation;
-
-   }
-
-   console.log( platzom( 'programar' ) );
-   console.log( platzom( 'zorro' ) );
-   console.log( platzom( 'zarpar' ) );
-   console.log( platzom( 'abecedario' ) );
-   console.log( platzom( 'sometemos' ) );
+      const promedio = totalKm / length;
+      console.log( `En promedio, ${nombre} corrió ${promedio.toFixed(2)}km` );
    </script>
 </body>
 </html>
