@@ -6,34 +6,40 @@
 </head>
 <body>
    <script type="text/javascript">
-      const dias = [
-         'lunes',
-         'martes',
-         'miercoles',
-         'jueves',
-         'sabado',
-         'domingo'
-      ]
+   let gokuLife = 100
+   let supermanLife = 100
+   const MIN_POWER = 5
+   const MAX_POWEr = 12
+   let round = 1
 
-      const nombre = 'shannonbit'
+   const ambosSiguenVivos = () => gokuLife > 0 && supermanLife > 0
+   const powerCalculator = () => Math.round( Math.random() * ( MAX_POWEr - MIN_POWER ) + MIN_POWER )
 
-      function correr(){
-         const min = 5;
-         const max = 15;
-         return Math.round( Math.random() * (max - min) +  min);
+   while( ambosSiguenVivos() ){
+      console.warn(`Round ${round}`)
+      const gokuPunch = powerCalculator()
+      const supermanPunch = powerCalculator()
+
+      if(gokuPunch > supermanPunch){
+         //Goku Ataca
+         console.info(`Goku ataca a Superman con un golpe de ${gokuPunch}`)
+         supermanLife -= gokuPunch
+         console.log(`Superman Lifepoints: ${supermanLife}`);
+      } else {
+         //Superman Ataca
+         console.info(`superman ataca a Goku con un golpe de ${supermanPunch}`)
+         gokuLife -= supermanPunch
+         console.log(`Goku Lifepoints: ${gokuLife}`);
       }
 
-      let totalKm = 0;
-      const length = dias.length;
+      round++;
+   }
 
-      for(let i = 0; i < length; i++){
-         const km = correr();
-         totalKm += km;
-         console.log( `El día ${dias[i]} ${nombre} corrió ${km}km` );
-      }
-
-      const promedio = totalKm / length;
-      console.log( `En promedio, ${nombre} corrió ${promedio.toFixed(2)}km` );
+   if( gokuLife > 0 ){
+      console.log(`Goku ganó la pelea`);
+   } else {
+      console.log(`Superman ganó la pelea`);
+   }
    </script>
 </body>
 </html>
