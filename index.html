@@ -14,10 +14,9 @@
       }
 
       listarAmigos(){
-         const _this = this
          this.amigos.forEach( function(amigo){
-            console.log(`HOla mi nombre es ${_this.nombre} y soy amigo de ${amigo}`)
-         })
+            console.log(`HOla mi nombre es ${this.nombre} y soy amigo de ${amigo}`)
+         }.bind(this))
 
       }
 
