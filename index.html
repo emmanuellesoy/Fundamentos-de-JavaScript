@@ -5,30 +5,24 @@
    <title>Fundamentos de JavaScript</title>
 </head>
 <body>
-   <button type="button" id="button">Off</button>
    <script type="text/javascript">
-   class ToggleButton {
+   const shannonbit = {
+      nombre: 'shannonbit',
+      apellido: 'dev'
+   }
 
-      constructor(element) {
-         this.element = element
-         this.element.innerHTML = 'Off'
-         this.activated = false
-         this.element.addEventListener('click', this.onClick.bind(this) )
-      }
+   function saludar(veces){
 
-      onClick() {
-         this.activated = !this.activated
-         this.toggleText()
-      }
-
-      toggleText() {
-         this.element.innerHTML = this.activated ? 'On' : 'Off'
+      for(let i = 0; i < veces; i++){
+         console.log(`Hola ${this.nombre} ${this.apellido}`)
       }
 
    }
 
-   const button = document.getElementById('button')
-   const miBoton = new ToggleButton(button)
+   saludar.call(shannonbit, 3)
+   saludar.apply(shannonbit, [3])
+   const params = [3]
+   saludar.call(shannonbit, ...params)
    </script>
 </body>
 </html>
