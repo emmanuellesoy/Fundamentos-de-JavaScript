@@ -5,26 +5,30 @@
    <title>Fundamentos de JavaScript</title>
 </head>
 <body>
+   <button type="button" id="button">Off</button>
    <script type="text/javascript">
-   class Persona {
+   class ToggleButton {
 
-      constructor(nombre, amigos = []){
-         this.nombre = nombre
-         this.amigos = amigos
+      constructor(element) {
+         this.element = element
+         this.element.innerHTML = 'Off'
+         this.activated = false
+         this.element.addEventListener('click', this.onClick.bind(this) )
       }
 
-      listarAmigos(){
-         this.amigos.forEach( (amigo) => {
-            console.log(`HOla mi nombre es ${this.nombre} y soy amigo de ${amigo}`)
-         })
+      onClick() {
+         this.activated = !this.activated
+         this.toggleText()
+      }
 
+      toggleText() {
+         this.element.innerHTML = this.activated ? 'On' : 'Off'
       }
 
    }
 
-   const shannonbit = new Persona("shannonbit", ['Pedro', 'Juan', 'Pepep'])
-
-   shannonbit.listarAmigos()
+   const button = document.getElementById('button')
+   const miBoton = new ToggleButton(button)
    </script>
 </body>
 </html>
