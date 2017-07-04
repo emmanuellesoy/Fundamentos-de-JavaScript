@@ -6,31 +6,26 @@
 </head>
 <body>
    <script type="text/javascript">
-   function saludarFamilia(apellido){
+   class Persona {
 
-      return function(nombre){
-         console.log(`Hola ${nombre} ${apellido}`)
+      constructor(nombre, amigos = []){
+         this.nombre = nombre
+         this.amigos = amigos
+      }
+
+      listarAmigos(){
+         const _this = this
+         this.amigos.forEach( function(amigo){
+            console.log(`HOla mi nombre es ${_this.nombre} y soy amigo de ${amigo}`)
+         })
+
       }
 
    }
 
-   const saludarGomez = saludarFamilia('Gomez')
-   const saludarPerez = saludarFamilia('Perez')
+   const shannonbit = new Persona("shannonbit", ['Pedro', 'Juan', 'Pepep'])
 
-   saludarGomez( 'Hector' )
-   saludarPerez( 'Juan' )
-
-   function makePrefixer(prefix){
-
-      return function(word){
-         console.log( `${prefix}${word}` );
-      }
-
-   }
-
-   const rePref = makePrefixer('re')
-   rePref('bueno')
-
+   shannonbit.listarAmigos()
    </script>
 </body>
 </html>
