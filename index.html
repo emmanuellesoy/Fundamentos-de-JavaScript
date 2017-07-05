@@ -6,23 +6,38 @@
 </head>
 <body>
    <script type="text/javascript">
-   const shannonbit = {
-      nombre: 'shannonbit',
-      apellido: 'dev'
-   }
+   function get(URL, callback) {
+      const xhr = new XMLHttpRequest();
 
-   function saludar(veces){
+      xhr.onreadystatechange = function() {
+         const DONE = 4
+         const OK = 200
 
-      for(let i = 0; i < veces; i++){
-         console.log(`Hola ${this.nombre} ${this.apellido}`)
+         if( this.readyState === DONE ) {
+
+            if( this.status === OK ) {
+               callback( null, JSON.parse(this.responseText) )
+            } else {
+               callback(new Error(`Se produjo un error al realizar el request: ${this.status}`))
+            }
+
+         }
+
       }
 
+      xhr.open('GET', URL);
+      xhr.send(null);
+
    }
 
-   saludar.call(shannonbit, 3)
-   saludar.apply(shannonbit, [3])
-   const params = [3]
-   saludar.call(shannonbit, ...params)
+   get("http://swapi.co/api/people/1/", function(error, data){
+
+      if(error) return console.log(`Request failed: ${error}` );
+
+         console.log(`Request succeded`);
+         console.log( data );
+
+   })
    </script>
 </body>
 </html>
