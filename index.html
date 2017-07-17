@@ -6,12 +6,11 @@
 </head>
 <body>
    <script type="text/javascript">
-   fetch("https://swapi.co/api/people/1/")
-   .then( response => response.json() )
-   .then( (json) => {
-      console.log(json);
-   } )
-   .catch( err => console.log(err) )
+   function fibonacci(n){
+      return fibonacci( num - 1 ) + fibonacci( num - 2 )
+   }
+
+   fibonacci( 5 )
    </script>
 </body>
 </html>
