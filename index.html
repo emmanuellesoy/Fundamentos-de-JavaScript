@@ -6,20 +6,31 @@
 </head>
 <body>
    <script type="text/javascript">
-      function* fibonacci() {
-         let a =0, b = 1
+      let shannonbit = {nombre: "Emmanuelle", apellido: 'Laguna', edad: 32}
+      let otroShannonbit = shannonbit
 
-         while( true ) {
-            let f = a
-            a = b
-            b += f
-            let reset = yield f
-            if( reset ) a = 0, b = 1
-         }
-
+      function cumple(persona){
+         persona.edad++
       }
 
-      const fibo = fibonacci()
+      console.log("shannonbit", shannonbit)
+      console.log("otroShannonbit", otroShannonbit)
+      cumple(otroShannonbit)
+      console.log("shannonbit", shannonbit)
+      console.log("otroShannonbit", otroShannonbit)
+
+      cumple = function(persona) {
+         const _persona = Object.assign( {}, persona )
+         _persona.edad++
+         return _persona
+      }
+
+      console.log("shannonbit", shannonbit)
+      console.log("otroShannonbit", otroShannonbit)
+      otroShannonbit = cumple(otroShannonbit)
+      console.log("shannonbit", shannonbit)
+      console.log("otroShannonbit", otroShannonbit)
+
    </script>
 </body>
 </html>
