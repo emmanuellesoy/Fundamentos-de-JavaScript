@@ -6,12 +6,23 @@
 </head>
 <body>
    <script type="text/javascript">
-   function fibonacci(num, memoria = {}) {
-      if( memoria[num] ) return memoria[num]
-      if (num == 1) return 0
-      if (num == 2) return 1
-      return memoria[num] = fibonacci( num - 1, memoria ) + fibonacci( num - 2, memoria )
-   }
+      function fibonacci() {
+         let a =0, b = 1
+
+         return {
+
+            next: function() {
+               let f = a
+               a = b
+               b += f
+               return {value: f, done: false}
+            }
+
+         }
+
+      }
+
+      const fibo = fibonacci()
    </script>
 </body>
 </html>
