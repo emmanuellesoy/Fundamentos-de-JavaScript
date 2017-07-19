@@ -5,32 +5,9 @@
    <title>Fundamentos de JavaScript</title>
 </head>
 <body>
+
    <script type="text/javascript">
-      let shannonbit = {nombre: "Emmanuelle", apellido: 'Laguna', edad: 32}
-      let otroShannonbit = shannonbit
-
-      function cumple(persona){
-         persona.edad++
-      }
-
-      console.log("shannonbit", shannonbit)
-      console.log("otroShannonbit", otroShannonbit)
-      cumple(otroShannonbit)
-      console.log("shannonbit", shannonbit)
-      console.log("otroShannonbit", otroShannonbit)
-
-      cumple = function(persona) {
-         const _persona = Object.assign( {}, persona )
-         _persona.edad++
-         return _persona
-      }
-
-      console.log("shannonbit", shannonbit)
-      console.log("otroShannonbit", otroShannonbit)
-      otroShannonbit = cumple(otroShannonbit)
-      console.log("shannonbit", shannonbit)
-      console.log("otroShannonbit", otroShannonbit)
-
+      
    </script>
 </body>
 </html>
